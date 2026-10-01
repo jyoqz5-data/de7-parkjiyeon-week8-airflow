@@ -1,7 +1,11 @@
 from datetime import datetime, timezone
 
-from airflow.providers.standard.operators.bash import BashOperator
-from airflow.sdk import DAG
+try:
+    from airflow.providers.standard.operators.bash import BashOperator
+    from airflow.sdk import DAG
+except ImportError:
+    from airflow import DAG
+    from airflow.operators.bash import BashOperator
 
 
 with DAG(
