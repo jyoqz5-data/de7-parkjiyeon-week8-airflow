@@ -1,0 +1,30 @@
+airflowVersion: "2.10.5"
+defaultAirflowTag: "2.10.5"
+
+executor: LocalExecutor
+
+config:
+  core:
+    load_examples: "False"
+
+dags:
+  persistence:
+    enabled: false
+  gitSync:
+    enabled: true
+    repo: https://github.com/jyoqz5-data/de7-parkjiyeon-week8-airflow
+    branch: main
+    ref: main
+    subPath: airflow-dags
+    depth: 1
+    wait: 10
+    period: 10s
+
+postgresql:
+  enabled: true
+  primary:
+    persistence:
+      enabled: false
+
+redis:
+  enabled: false
