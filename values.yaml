@@ -6,6 +6,26 @@ executor: LocalExecutor
 config:
   core:
     load_examples: "False"
+  webserver:
+    workers: "8"
+    web_server_worker_timeout: "30"
+
+webserver:
+  livenessProbe:
+    initialDelaySeconds: 30
+    timeoutSeconds: 20
+    failureThreshold: 10
+    periodSeconds: 30
+  readinessProbe:
+    initialDelaySeconds: 30
+    timeoutSeconds: 20
+    failureThreshold: 10
+    periodSeconds: 15
+  startupProbe:
+    initialDelaySeconds: 10
+    timeoutSeconds: 20
+    failureThreshold: 30
+    periodSeconds: 10
 
 dags:
   persistence:
